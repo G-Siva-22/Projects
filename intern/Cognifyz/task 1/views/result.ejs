@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission Result</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+</head>
+<body>
+  <div class="container">
+    <div class="form-card result-card">
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      </div>
+      
+      <div class="form-header">
+        <h1>Form Submission Received!</h1>
+        <p>Thank you for your submission. We've received your information.</p>
+      </div>
+      
+      <div class="result-details">
+        <div class="detail-item">
+          <span class="detail-label">Username:</span>
+          <span class="detail-value"><%= username %></span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label">Email:</span>
+          <span class="detail-value"><%= email %></span>
+        </div>
+      </div>
+      
+      <a href="/" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Go Back</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

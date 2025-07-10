@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-600">Your Contacts</h1>
+            <div class="flex space-x-4">
+                <a href="{% url 'add_contact' %}" class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700">
+                    Add New Contact
+                </a>
+                <a href="{% url 'export_contacts_csv' %}" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
+                    Download CSV
+                </a>
+            </div>
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <table class="min-w-full table-auto">
+                <thead>
+                    <tr class="bg-blue-500 text-white">
+                        <th class="px-4 py-2">Name</th>
+                        <th class="px-4 py-2">Phone Number</th>
+                        <th class="px-4 py-2">Email</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr class="text-center hover:bg-gray-100">
+                        <td class="border px-4 py-2">{{ contact.name }}</td>
+                        <td class="border px-4 py-2">{{ contact.phone }}</td>
+                        <td class="border px-4 py-2">{{ contact.email }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="{% url 'edit_contact' contact.id %}" class="text-blue-600 hover:underline">Edit</a>
+                            <a href="{% url 'delete_contact' contact.id %}" class="text-red-600 hover:underline ml-4">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center py-4 text-gray-600">No contacts found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

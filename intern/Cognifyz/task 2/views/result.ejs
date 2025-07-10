@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submission Results</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
+      color: #2d3748;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    .result-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, #059669, #10b981);
+    }
+
+    h2 {
+      color: #059669;
+      margin: 0 0 1.5rem;
+      font-size: 1.875rem;
+      text-align: center;
+    }
+
+    .user-details {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .user-details p {
+      margin: 0.5rem 0;
+      color: #1a202c;
+    }
+
+    .user-details strong {
+      color: #4a5568;
+      margin-right: 0.5rem;
+    }
+
+    h3 {
+      color: #1a202c;
+      margin: 2rem 0 1rem;
+      font-size: 1.25rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background: #f8fafc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    li {
+      padding: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      color: #4a5568;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(to right, #4f46e5, #7c3aed);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: transform 0.2s;
+    }
+
+    .back-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .back-link:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="result-card">
+      <h2>Form Submitted Successfully!</h2>
+      
+      <div class="user-details">
+        <p><strong>Username:</strong> <%= username %></p>
+        <p><strong>Email:</strong> <%= email %></p>
+        <p><strong>Age:</strong> <%= age %></p>
+      </div>
+
+      <h3>All Submissions</h3>
+      <ul>
+        <% allData.forEach(user => { %>
+          <li><%= user.username %> | <%= user.email %> | <%= user.age %></li>
+        <% }); %>
+      </ul>
+
+      <a href="/" class="back-link">Back to Form</a>
+    </div>
+  </div>
+</body>
+</html>

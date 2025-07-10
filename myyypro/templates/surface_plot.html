@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Surface Plot Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 0.85rem;
+            padding: 2px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #d946ef);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .gradient-border:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1);
+        }
+
+        .plot-container {
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .plot-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .stats-card {
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .animated-gradient {
+            background: linear-gradient(-45deg, #6366f1, #8b5cf6, #d946ef, #6366f1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <!-- Animated Background Pattern -->
+    <div class="fixed inset-0 -z-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#e5e7eb,transparent)]"></div>
+        <div class="absolute inset-0 opacity-30 animated-gradient"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Header -->
+        <div class="text-center mb-12 space-y-4">
+            <h1 class="text-6xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-transparent bg-clip-text mb-6 animate-fade-in">
+                3D Surface Plot Visualization
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Interactive 3D visualization with advanced analytics and controls
+            </p>
+            <div class="flex justify-center gap-4 mt-6">
+                <a href="/" class="gradient-border bg-white hover:bg-gray-50 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg inline-flex items-center gap-2 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-600 group-hover:text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Data Viewer
+                </a>
+                <button onclick="downloadPlot()" class="gradient-border bg-white hover:bg-gray-50 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg inline-flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Export Plot
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Sidebar - Statistics -->
+            <div class="space-y-6">
+                <div class="glass-effect rounded-xl p-6 stats-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                        Data Statistics
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <p class="flex justify-between">
+                            <span class="text-gray-600">Data Points:</span>
+                            <span class="font-semibold text-gray-800">{{ stats.points }}</span>
+                        </p>
+                        <p class="flex justify-between">
+                            <span class="text-gray-600">X Range:</span>
+                            <span class="font-semibold text-gray-800">{{ stats.x_range }}</span>
+                        </p>
+                        <p class="flex justify-between">
+                            <span class="text-gray-600">Y Range:</span>
+                            <span class="font-semibold text-gray-800">{{ stats.y_range }}</span>
+                        </p>
+                        <p class="flex justify-between">
+                            <span class="text-gray-600">Z Range:</span>
+                            <span class="font-semibold text-gray-800">{{ stats.z_range }}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Color Scale Controls -->
+                <div class="glass-effect rounded-xl p-6 stats-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                        </svg>
+                        Color Scale
+                    </h3>
+                    <div class="space-y-4">
+                        <select id="colorScale" onchange="updateColorScale()" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <option value="Viridis">Viridis</option>
+                            <option value="Plasma">Plasma</option>
+                            <option value="Inferno">Inferno</option>
+                            <option value="Magma">Magma</option>
+                        </select>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span>Min: {{ stats.z_min }}</span>
+                            <span>Max: {{ stats.z_max }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center - Main Plot -->
+            <div class="lg:col-span-2">
+                <div class="glass-effect rounded-2xl shadow-xl p-8 plot-container">
+                    <div class="w-full aspect-[4/3] rounded-xl overflow-hidden">
+                        {{ plot_html | safe }}
+                    </div>
+                </div>
+
+                <!-- Plot Controls -->
+                <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <button onclick="resetView()" class="tooltip glass-effect p-4 rounded-xl text-gray-700 hover:bg-white/80 transition-all duration-300" data-tooltip="Reset to default view">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </button>
+                    <button onclick="toggleGrid()" class="tooltip glass-effect p-4 rounded-xl text-gray-700 hover:bg-white/80 transition-all duration-300" data-tooltip="Toggle grid lines">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
+                    </button>
+                    <button onclick="toggleProjection()" class="tooltip glass-effect p-4 rounded-xl text-gray-700 hover:bg-white/80 transition-all duration-300" data-tooltip="Toggle axis projections">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                        </svg>
+                    </button>
+                    <button onclick="toggleMode()" class="tooltip glass-effect p-4 rounded-xl text-gray-700 hover:bg-white/80 transition-all duration-300" data-tooltip="Toggle surface/wireframe">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Plot control functions
+        function resetView() {
+            Plotly.relayout('3dPlot', {
+                'scene.camera': {
+                    eye: { x: 1.5, y: 1.5, z: 1.5 },
+                }
+            });
+        }
+
+        function toggleGrid() {
+            let layout = Plotly.d3.select('#3dPlot').node().layout;
+            layout.scene.grid.visible = !layout.scene.grid.visible;
+            Plotly.redraw('3dPlot');
+        }
+
+        function toggleProjection() {
+            let layout = Plotly.d3.select('#3dPlot').node().layout;
+            layout.scene.projection.type = layout.scene.projection.type === 'perspective' ? 'orthographic' : 'perspective';
+            Plotly.redraw('3dPlot');
+        }
+
+        function toggleMode() {
+            let layout = Plotly.d3.select('#3dPlot').node().layout;
+            layout.scene.mode = layout.scene.mode === 'surface' ? 'wireframe' : 'surface';
+            Plotly.redraw('3dPlot');
+        }
+
+        function downloadPlot() {
+            Plotly.downloadImage('3dPlot', {
+                format: 'png',
+                width: 1200,
+                height: 800,
+                filename: '3d_surface_plot',
+            });
+        }
+
+        function updateColorScale() {
+            let scale = document.getElementById('colorScale').value;
+            Plotly.relayout('3dPlot', {
+                coloraxis: {
+                    colorscale: scale
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

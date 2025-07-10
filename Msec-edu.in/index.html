@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meenakshi Sundararajan Engineering College</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f4c81',
+            secondary: '#ff6b35',
+            accent: '#5b8c85',
+            light: '#f7f9fc',
+            dark: '#1a2a36'
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['Merriweather', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .carousel {
+      scroll-snap-type: x mandatory;
+    }
+    
+    .carousel-item {
+      scroll-snap-align: start;
+    }
+    
+    .news-ticker {
+      animation: ticker 30s linear infinite;
+    }
+    
+    @keyframes ticker {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+    
+    .counter-box {
+      counter-reset: count 0;
+      animation: count 2s forwards;
+    }
+    
+    @keyframes count {
+      from { counter-increment: count 0; }
+      to { counter-increment: count attr(data-count); }
+    }
+    
+    .counter-box::after {
+      content: counter(count);
+    }
+  </style>
+</head>
+<body class="font-sans bg-light text-dark">
+  <!-- Top Bar -->
+  <div class="bg-primary text-white py-1 px-4">
+    <div class="container mx-auto flex flex-wrap justify-between items-center text-sm">
+      <div class="flex items-center space-x-4">
+        <a href="tel:9790821869" class="hover:text-secondary flex items-center">
+          <i class="fas fa-phone-alt mr-1"></i> 9790821869 / 9840311869
+        </a>
+        <a href="mailto:info@msec.edu.in" class="hover:text-secondary hidden md:flex items-center">
+          <i class="fas fa-envelope mr-1"></i> info@msec.edu.in
+        </a>
+      </div>
+      <div class="flex items-center space-x-3">
+        <a href="https://www.instagram.com/msecofficial_chennai24/" class="hover:text-secondary" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/school/meenakshi-sundararajan-engineering-college/" class="hover:text-secondary" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/Meenaks69013210?t=LgZCA_xGVv99qM5nGfEmHg&s=09" class="hover:text-secondary" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100009573376892&mibextid=ZbWKwL" class="hover:text-secondary" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://youtube.com/@meenakshisundararajanengin6468" class="hover:text-secondary" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <div class="flex items-center">
+          <img src="https://msec.edu.in/logomsec.png" alt="MSEC Logo" class="h-16 mr-3">
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold text-primary">Meenakshi Sundararajan</h1>
+            <h2 class="text-lg md:text-xl font-semibold text-secondary">Engineering College</h2>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-primary focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-1">
+          <a href="#home" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Home</a>
+          <div class="relative group">
+            <button class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors flex items-center">
+              About <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </button>
+            <div class="absolute left-0 mt-1 w-48 bg-white shadow-lg rounded-md overflow-hidden z-20 transform scale-0 group-hover:scale-100 transition-transform origin-top">
+              <a href="#vision" class="block px-4 py-2 hover:bg-primary hover:text-white">Vision and Mission</a>
+              <a href="#management" class="block px-4 py-2 hover:bg-primary hover:text-white">Management</a>
+              <a href="#faculty" class="block px-4 py-2 hover:bg-primary hover:text-white">Administration & Faculty</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors flex items-center">
+              Departments <i class="fas fa-chevron-down ml-1 text-xs"></i>
+            </button>
+            <div class="absolute left-0 mt-1 w-64 bg-white shadow-lg rounded-md overflow-hidden z-20 transform scale-0 group-hover:scale-100 transition-transform origin-top">
+              <a href="#civil" class="block px-4 py-2 hover:bg-primary hover:text-white">Civil Engineering</a>
+              <a href="#cse" class="block px-4 py-2 hover:bg-primary hover:text-white">Computer Science and Engineering</a>
+              <a href="#ece" class="block px-4 py-2 hover:bg-primary hover:text-white">Electronics and Communication Engineering</a>
+              <a href="#eee" class="block px-4 py-2 hover:bg-primary hover:text-white">Electrical and Electronics Engineering</a>
+              <a href="#it" class="block px-4 py-2 hover:bg-primary hover:text-white">Information Technology</a>
+              <a href="#mech" class="block px-4 py-2 hover:bg-primary hover:text-white">Mechanical Engineering</a>
+              <a href="#aids" class="block px-4 py-2 hover:bg-primary hover:text-white">AI and Data Science</a>
+            </div>
+          </div>
+          <a href="#admissions" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Admissions</a>
+          <a href="#placements" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Placements</a>
+          <a href="#facilities" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Facilities</a>
+          <a href="#contact" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Contact</a>
+          <a href="https://forms.gle/5B2eBv85GLwnzxza7" target="_blank" class="ml-2 px-4 py-2 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-colors">Apply Now</a>
+        </nav>
+      </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="hidden bg-white shadow-inner">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex flex-col space-y-2">
+          <a href="#home" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Home</a>
+          
+          <div class="mobile-dropdown">
+            <button class="w-full text-left px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors flex items-center justify-between">
+              About <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <div class="hidden pl-4 mt-1 space-y-1">
+              <a href="#vision" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Vision and Mission</a>
+              <a href="#management" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Management</a>
+              <a href="#faculty" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Administration & Faculty</a>
+            </div>
+          </div>
+          
+          <div class="mobile-dropdown">
+            <button class="w-full text-left px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors flex items-center justify-between">
+              Departments <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <div class="hidden pl-4 mt-1 space-y-1">
+              <a href="#civil" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Civil Engineering</a>
+              <a href="#cse" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Computer Science and Engineering</a>
+              <a href="#ece" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Electronics and Communication Engineering</a>
+              <a href="#eee" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Electrical and Electronics Engineering</a>
+              <a href="#it" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Information Technology</a>
+              <a href="#mech" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">Mechanical Engineering</a>
+              <a href="#aids" class="block px-3 py-2 rounded hover:bg-primary hover:text-white">AI and Data Science</a>
+            </div>
+          </div>
+          
+          <a href="#admissions" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Admissions</a>
+          <a href="#placements" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Placements</a>
+          <a href="#facilities" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Facilities</a>
+          <a href="#contact" class="px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors">Contact</a>
+          <a href="https://forms.gle/5B2eBv85GLwnzxza7" target="_blank" class="px-4 py-2 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-colors text-center">Apply Now</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Important Announcements Ticker -->
+  <div class="bg-secondary text-white py-2 overflow-hidden">
+    <div class="news-ticker whitespace-nowrap">
+      <span class="inline-block px-4">📢 Admission Enquiry 2025-2026 - Contact: 9790821869 / 9840311869</span>
+      <span class="inline-block px-4">📝 End Semester Examination Timetable - November/December 2024 Now Available</span>
+      <span class="inline-block px-4">🎓 19th Graduation Day for 2019-23 Batch is held on 24th January 2025 at 3:00 pm</span>
+      <span class="inline-block px-4">📅 Academic Calendar 2024-25 (Even Semester) Released</span>
+      <span class="inline-block px-4">🏆 External Competitions/Hackathons - Registration Form for Even Semester 2024-25 is Open</span>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative">
+    <!-- Hero Carousel -->
+    <div id="hero-carousel" class="relative h-[500px] overflow-hidden">
+      <div class="absolute inset-0 flex transition-transform duration-1000 ease-in-out">
+        <div class="carousel-slide min-w-full h-full relative">
+          <img src="https://msec.edu.in/autonomousmsec.jpg" alt="MSEC Campus" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent flex items-center">
+            <div class="container mx-auto px-6">
+              <div class="max-w-lg animate-fade-in">
+                <h2 class="text-4xl font-bold text-white mb-4">Excellence in Engineering Education</h2>
+                <p class="text-white text-lg mb-6">Shaping future engineers with quality education and ethical values since 2001.</p>
+                <div class="flex space-x-4">
+                  <a href="#admissions" class="px-6 py-3 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-colors font-medium">Apply Now</a>
+                  <a href="#about" class="px-6 py-3 bg-white text-primary rounded-md hover:bg-opacity-90 transition-colors font-medium">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide min-w-full h-full relative">
+          <img src="https://msec.edu.in/placement22-23.jpeg" alt="MSEC Placements" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent flex items-center">
+            <div class="container mx-auto px-6">
+              <div class="max-w-lg animate-fade-in">
+                <h2 class="text-4xl font-bold text-white mb-4">Exceptional Placement Record</h2>
+                <p class="text-white text-lg mb-6">Our students are placed in top companies with competitive packages.</p>
+                <div class="flex space-x-4">
+                  <a href="#placements" class="px-6 py-3 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-colors font-medium">Placement Stats</a>
+                  <a href="#companies" class="px-6 py-3 bg-white text-primary rounded-md hover:bg-opacity-90 transition-colors font-medium">Our Recruiters</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide min-w-full h-full relative">
+          <img src="https://msec.edu.in/SIH_ECE_Winner_2023.jpg" alt="MSEC Achievements" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent flex items-center">
+            <div class="container mx-auto px-6">
+              <div class="max-w-lg animate-fade-in">
+                <h2 class="text-4xl font-bold text-white mb-4">Award-Winning Innovation</h2>
+                <p class="text-white text-lg mb-6">Our students excel in national competitions and hackathons.</p>
+                <div class="flex space-x-4">
+                  <a href="#achievements" class="px-6 py-3 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-colors font-medium">Student Achievements</a>
+                  <a href="#innovation" class="px-6 py-3 bg-white text-primary rounded-md hover:bg-opacity-90 transition-colors font-medium">Innovation Hub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Carousel Controls -->
+      <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white rounded-full p-2 focus:outline-none">
+        <i class="fas fa-chevron-left text-xl"></i>
+      </button>
+      <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white rounded-full p-2 focus:outline-none">
+        <i class="fas fa-chevron-right text-xl"></i>
+      </button>
+      
+      <!-- Carousel Indicators -->
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 focus:outline-none active"></button>
+        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 focus:outline-none"></button>
+        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 focus:outline-none"></button>
+      </div>
+    </div>
+    
+    <!-- Quick Links -->
+    <div class="container mx-auto px-4 -mt-16 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="#admissions" class="bg-white rounded-lg shadow-lg p-6 flex items-center hover-scale">
+          <div class="bg-primary/10 rounded-full p-4 mr-4">
+            <i class="fas fa-graduation-cap text-2xl text-primary"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary">Admissions 2025-26</h3>
+            <p class="text-gray-600">Apply now for upcoming batch</p>
+          </div>
+        </a>
+        <a href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=2462563" target="_blank" class="bg-white rounded-lg shadow-lg p-6 flex items-center hover-scale">
+          <div class="bg-secondary/10 rounded-full p-4 mr-4">
+            <i class="fas fa-credit-card text-2xl text-secondary"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-secondary">Fee Payment</h3>
+            <p class="text-gray-600">Pay fees online securely</p>
+          </div>
+        </a>
+        <a href="#contact" class="bg-white rounded-lg shadow-lg p-6 flex items-center hover-scale">
+          <div class="bg-accent/10 rounded-full p-4 mr-4">
+            <i class="fas fa-headset text-2xl text-accent"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-accent">Help Desk</h3>
+            <p class="text-gray-600">Get assistance & support</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-2">About MSEC</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-3xl mx-auto">Excellence in engineering education since 2001</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <h3 class="text-2xl font-semibold text-primary mb-4">Our Legacy of Excellence</h3>
+          <p class="text-gray-700 mb-4">
+            Meenakshi Sundararajan Engineering College (MSEC) was established by the IIET Society in 2001. This institution is a part of the prestigious KRS Group of Institutions which also includes the renowned IIET (Indian Institute of Engineering Technology) established in 1947 by our Founder Late Shri K.R.Sundararajan, the well-known Meenakshi College for Women and the more recently established Meenakshi Sundararajan School of Management.
+          </p>
+          <p class="text-gray-700 mb-6">
+            The institutions on the KRS Campus are known for the quality education they impart and their stringent levels of discipline. We have consistently outshone all our peers, not only in academics, but in co-curricular activities as well.
+          </p>
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <div class="text-3xl font-bold text-primary mb-1">2001</div>
+              <p class="text-gray-600">Established</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <div class="text-3xl font-bold text-primary mb-1">7</div>
+              <p class="text-gray-600">Departments</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <div class="text-3xl font-bold text-primary mb-1">100+</div>
+              <p class="text-gray-600">Faculty</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <div class="text-3xl font-bold text-primary mb-1">90%+</div>
+              <p class="text-gray-600">Placement</p>
+            </div>
+          </div>
+          <a href="#vision" class="inline-flex items-center text-secondary font-medium hover:underline">
+            Learn more about our vision <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        <div class="order-1 md:order-2">
+          <img src="https://msec.edu.in/babai_mam.jpg" alt="MSEC Campus" class="rounded-lg shadow-lg w-full h-auto">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision and Mission -->
+  <section id="vision" class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">Vision & Mission</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="max-w-3xl mx-auto opacity-90">Guiding principles that drive our institution</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-lg">
+          <div class="bg-secondary/20 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-eye text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">Our Vision</h3>
+          <p class="opacity-90 mb-4">
+            To develop this institution into a "CENTRE OF EXCELLENCE" imparting Engineering education to young men and women, grooming their overall personality with the highest emphasis on ethical values.
+          </p>
+          <p class="opacity-90">
+            We aim to create engineers who are not only technically proficient but also ethically responsible and ready to face the challenges of the industry and the nation at large.
+          </p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-lg">
+          <div class="bg-secondary/20 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+            <i class="fas fa-bullseye text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">Our Mission</h3>
+          <ul class="space-y-3 opacity-90">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle mt-1 mr-3 text-secondary"></i>
+              <span>Provide quality education with state-of-the-art infrastructure</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle mt-1 mr-3 text-secondary"></i>
+              <span>Foster innovation, research, and entrepreneurship</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle mt-1 mr-3 text-secondary"></i>
+              <span>Develop industry-ready professionals with strong ethical values</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle mt-1 mr-3 text-secondary"></i>
+              <span>Promote holistic development through co-curricular activities</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle mt-1 mr-3 text-secondary"></i>
+              <span>Maintain stringent levels of discipline and academic excellence</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Departments -->
+  <section id="departments" class="py-16 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-2">Our Departments</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-3xl mx-auto">Explore our diverse range of engineering disciplines</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Civil Engineering -->
+        <div id="civil" class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fas fa-building text-6xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Civil Engineering</h3>
+            <p class="text-gray-600 mb-4">
+              Learn to design, construct and maintain the physical and naturally built environment.
+            </p>
+            <a href="https://msec.edu.in/civil.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Computer Science and Engineering -->
+        <div id="cse" class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fas fa-laptop-code text-6xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Computer Science and Engineering</h3>
+            <p class="text-gray-600 mb-4">
+              Study the theory, design, development and application of computer systems.
+            </p>
+            <a href="https://msec.edu.in/Computer.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Electronics and Communication Engineering -->
+        <div id="ece" class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fas fa-microchip text-6xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Electronics and Communication Engineering</h3>
+            <p class="text-gray-600 mb-4">
+              Focus on electronic devices, circuits, communication equipment and systems.
+            </p>
+            <a href="https://msec.edu.in/ece.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Electrical and Electronics Engineering -->
+        <div id="eee" class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fas fa-bolt text-6xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Electrical and Electronics Engineering</h3>
+            <p class="text-gray-600 mb-4">
+              Study of electrical systems, power generation, transmission and electronic devices.
+            </p>
+            <a href="https://msec.edu.in/eee.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Information Technology -->
+        <div id="it" class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fas fa-database text-6xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Information Technology</h3>
+            <p class="text-gray-600 mb-4">
+              Focus on information systems, software development, and data management.
+            </p>
+            <a href="https://msec.edu.in/it.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Mechanical Engineering -->
+        <div id="mech" class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fas fa-cogs text-6xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Mechanical Engineering</h3>
+            <p class="text-gray-600 mb-4">
+              Study of design, manufacturing, and operation of mechanical systems.
+            </p>
+            <a href="https://msec.edu.in/mechanical.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- AI and Data Science -->
+        <div id="aids" class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-primary/10 flex items-center justify-center">
+            <i class="fas fa-brain text-6xl text-primary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Artificial Intelligence and Data Science</h3>
+            <p class="text-gray-600 mb-4">
+              Study of AI algorithms, machine learning, and data analytics techniques.
+            </p>
+            <a href="https://msec.edu.in/AI_DS.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Learn more <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements & Accreditations -->
+  <section id="achievements" class="py-16 bg-gradient-to-r from-primary to-accent text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">Achievements & Accreditations</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="max-w-3xl mx-auto opacity-90">Recognition of our commitment to excellence</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+          <img src="https://msec.edu.in/AUTONOMOUS.pdf" alt="Autonomous Status" class="h-16 mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">Autonomous Status</h3>
+          <p class="opacity-80">Granted autonomous status by UGC</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+          <img src="https://msec.edu.in/AICTE_Approval.pdf" alt="AICTE Approval" class="h-16 mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">AICTE Approved</h3>
+          <p class="opacity-80">Approved by All India Council for Technical Education</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+          <img src="https://msec.edu.in/NBA.html" alt="NBA Accreditation" class="h-16 mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">NBA Accredited</h3>
+          <p class="opacity-80">National Board of Accreditation certified programs</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+          <img src="https://msec.edu.in/NAAC/NAAC.html" alt="NAAC Accreditation" class="h-16 mx-auto mb-4">
+          <h3 class="text-xl font-semibold mb-2">NAAC Accredited</h3>
+          <p class="opacity-80">National Assessment and Accreditation Council certified</p>
+        </div>
+      </div>
+      
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fas fa-trophy text-secondary mr-3"></i> Awards & Recognition
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-award text-secondary mr-3 mt-1"></i>
+              <span>Best Engineering College by Mylapore Academy</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-award text-secondary mr-3 mt-1"></i>
+              <span>Best Maintained College by South Madras Club</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-award text-secondary mr-3 mt-1"></i>
+              <span>AICTE-CII Ranking for Industry-linked Technical Institutes</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-award text-secondary mr-3 mt-1"></i>
+              <span>AICTE Jal Shakti Abhiyan Recognition</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fas fa-medal text-secondary mr-3"></i> Student Achievements
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-star text-secondary mr-3 mt-1"></i>
+              <span>Smart India Hackathon Winners 2023</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-star text-secondary mr-3 mt-1"></i>
+              <span>University Rank Holders in multiple departments</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-star text-secondary mr-3 mt-1"></i>
+              <span>National level technical symposium winners</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-star text-secondary mr-3 mt-1"></i>
+              <span>Research paper publications in international journals</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fas fa-chart-line text-secondary mr-3"></i> Rankings
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+              <span>Ranked #1 in Anna University Examinations</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+              <span>NIRF Ranking participant</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+              <span>ARIIA Ranking for innovation achievements</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+              <span>Top engineering college in Chennai region</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admissions -->
+  <section id="admissions" class="py-16 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-2">Admissions 2025-26</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-3xl mx-auto">Begin your journey towards a successful engineering career</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow-md p-8">
+            <h3 class="text-2xl font-semibold text-primary mb-6">Admission Process</h3>
+            
+            <div class="space-y-6">
+              <div class="flex">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">1</div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-medium text-primary">Application</h4>
+                  <p class="text-gray-600 mt-1">Fill out the online application form with all required details and documents.</p>
+                </div>
+              </div>
+              
+              <div class="flex">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">2</div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-medium text-primary">Entrance Exam</h4>
+                  <p class="text-gray-600 mt-1">Qualify in the state/national level entrance examinations (TNEA/JEE).</p>
+                </div>
+              </div>
+              
+              <div class="flex">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">3</div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-medium text-primary">Counselling</h4>
+                  <p class="text-gray-600 mt-1">Attend the counselling session based on your rank and choose your preferred course.</p>
+                </div>
+              </div>
+              
+              <div class="flex">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">4</div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-medium text-primary">Admission Confirmation</h4>
+                  <p class="text-gray-600 mt-1">Pay the admission fees and complete the enrollment process to secure your seat.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <a href="https://msec.edu.in/CollegeBrochure.pdf" target="_blank" class="flex items-center justify-center bg-primary text-white py-3 px-4 rounded-md hover:bg-primary/90 transition-colors">
+                <i class="fas fa-download mr-2"></i> Download Brochure
+              </a>
+              <a href="https://forms.gle/5B2eBv85GLwnzxza7" target="_blank" class="flex items-center justify-center bg-secondary text-white py-3 px-4 rounded-md hover:bg-secondary/90 transition-colors">
+                <i class="fas fa-paper-plane mr-2"></i> Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="bg-primary text-white rounded-lg shadow-md p-8">
+            <h3 class="text-2xl font-semibold mb-6">Contact Admissions</h3>
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <i class="fas fa-phone-alt mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-medium">Admission Helpline</h4>
+                  <p class="opacity-90">9790821869 / 9840311869</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <i class="fas fa-envelope mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-medium">Email</h4>
+                  <p class="opacity-90">admissions@msec.edu.in</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <i class="fas fa-clock mt-1 mr-3"></i>
+                <div> <div>
+                  <h4 class="font-medium">Office Hours</h4>
+                  <p class="opacity-90">Monday to Saturday: 9:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-medium">Address</h4>
+                  <p class="opacity-90">363, Arcot Road, Kodambakkam, Chennai - 600 024</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <h4 class="font-medium mb-3">Eligibility Criteria</h4>
+              <ul class="space-y-2 opacity-90">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-secondary"></i>
+                  <span>Pass in 10+2 with Physics, Chemistry, Mathematics</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-secondary"></i>
+                  <span>Minimum 50% aggregate in PCM subjects</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-secondary"></i>
+                  <span>Valid TNEA/JEE score (as applicable)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+            <h4 class="font-semibold text-primary mb-3">Important Dates</h4>
+            <ul class="space-y-3">
+              <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <span class="text-gray-700">Application Opens</span>
+                <span class="font-medium text-primary">January 15, 2025</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <span class="text-gray-700">Application Deadline</span>
+                <span class="font-medium text-primary">May 31, 2025</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <span class="text-gray-700">Counselling Begins</span>
+                <span class="font-medium text-primary">June 15, 2025</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span class="text-gray-700">Classes Commence</span>
+                <span class="font-medium text-primary">August 1, 2025</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Placements -->
+  <section id="placements" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-2">Placements</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-3xl mx-auto">Our students are placed in top companies with competitive packages</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-primary text-white p-6">
+            <h3 class="text-xl font-semibold mb-2">Placement Highlights</h3>
+            <p class="opacity-90">2023-24 Placement Statistics</p>
+          </div>
+          <div class="p-6">
+            <div class="space-y-4">
+              <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <span class="text-gray-700">Placement Percentage</span>
+                <span class="font-bold text-primary">92%</span>
+              </div>
+              <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <span class="text-gray-700">Highest Package</span>
+                <span class="font-bold text-primary">₹18 LPA</span>
+              </div>
+              <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <span class="text-gray-700">Average Package</span>
+                <span class="font-bold text-primary">₹6.5 LPA</span>
+              </div>
+              <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <span class="text-gray-700">Companies Visited</span>
+                <span class="font-bold text-primary">120+</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">Students Placed</span>
+                <span class="font-bold text-primary">450+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-semibold text-primary mb-4">Top Recruiters</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <img src="https://msec.edu.in/Virtusa.jpg" alt="Virtusa" class="h-12 object-contain">
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <img src="https://msec.edu.in/SBI.png" alt="SBI" class="h-12 object-contain">
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <img src="https://msec.edu.in/Recruiter.jpg" alt="TCS" class="h-12 object-contain">
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <img src="https://msec.edu.in/CII.jpg" alt="CII" class="h-12 object-contain">
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">Infosys</span>
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">Wipro</span>
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">Cognizant</span>
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">HCL</span>
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">Accenture</span>
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">Tech Mahindra</span>
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">Amazon</span>
+              </div>
+              <div class="p-4 border rounded-md flex items-center justify-center hover:shadow-md transition-shadow">
+                <span class="font-medium text-primary">+ 100 more</span>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <h3 class="text-xl font-semibold text-primary mb-4">Placement Process</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-gray-50 p-4 rounded-md">
+                  <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-3">1</div>
+                  <h4 class="font-medium text-primary mb-2">Pre-Placement Training</h4>
+                  <p class="text-sm text-gray-600">Comprehensive training on aptitude, technical skills, and soft skills</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-md">
+                  <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-3">2</div>
+                  <h4 class="font-medium text-primary mb-2">Campus Drives</h4>
+                  <p class="text-sm text-gray-600">On-campus recruitment drives by top companies</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-md">
+                  <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-3">3</div>
+                  <h4 class="font-medium text-primary mb-2">Selection Process</h4>
+                  <p class="text-sm text-gray-600">Aptitude tests, technical interviews, HR interviews, and final selection</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-xl font-semibold text-primary mb-4">Department-wise Placement Statistics</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Students Placed</th>
+                <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Placement %</th>
+                <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Avg. Package (LPA)</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Computer Science and Engineering</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">98</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">96%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">7.8</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Information Technology</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">92</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">95%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">7.5</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Electronics and Communication Engineering</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">85</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">92%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">6.8</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Electrical and Electronics Engineering</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">78</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">90%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">6.2</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Mechanical Engineering</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">65</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">85%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">5.8</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Civil Engineering</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">52</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">82%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">5.5</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">AI and Data Science</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">45</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">98%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">8.2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section id="facilities" class="py-16 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-2">Campus Facilities</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-3xl mx-auto">State-of-the-art infrastructure for holistic development</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Modern Laboratories</h3>
+            <p class="text-gray-600 mb-4">
+              Well-equipped laboratories with the latest equipment and technology for practical learning.
+            </p>
+            <a href="https://msec.edu.in/lab.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              View Labs <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Library</h3>
+            <p class="text-gray-600 mb-4">
+              Extensive collection of books, journals, and digital resources for academic research.
+            </p>
+            <a href="https://msec.edu.in/Library.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Explore Library <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Auditoriums</h3>
+            <p class="text-gray-600 mb-4">
+              Spacious auditoriums for conferences, seminars, and cultural events.
+            </p>
+            <a href="https://msec.edu.in/auditorium.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              View Auditoriums <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Sports Facilities</h3>
+            <p class="text-gray-600 mb-4">
+              Indoor and outdoor sports facilities for physical fitness and recreation.
+            </p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Explore Sports <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Innovation Hub</h3>
+            <p class="text-gray-600 mb-4">
+              Dedicated space for students to work on innovative projects and startups.
+            </p>
+            <a href="https://msec.edu.in/AboutIIC.html" target="_blank" class="inline-flex items-center text-secondary font-medium hover:underline">
+              Visit Innovation Hub <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Hostel Facilities</h3>
+            <p class="text-gray-600 mb-4">
+              Comfortable and secure accommodation for outstation students.
+            </p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              View Hostels <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">What Our Students Say</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="max-w-3xl mx-auto opacity-90">Hear from our alumni about their MSEC experience</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-xl">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">Priya Ramachandran</h4>
+              <p class="opacity-80 text-sm">CSE, Batch of 2020</p>
+            </div>
+          </div>
+          <p class="opacity-90 mb-4">
+            "MSEC provided me with a strong foundation in computer science. The faculty's guidance and industry-focused curriculum helped me secure a job at a leading tech company."
+          </p>
+          <div class="flex text-secondary">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-xl">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">Karthik Sundaram</h4>
+              <p class="opacity-80 text-sm">ECE, Batch of 2019</p>
+            </div>
+          </div>
+          <p class="opacity-90 mb-4">
+            "The practical exposure and hands-on training at MSEC were exceptional. The college's focus on both technical skills and personality development prepared me well for my career."
+          </p>
+          <div class="flex text-secondary">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-xl">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">T.G. Kaushik</h4>
+              <p class="opacity-80 text-sm">CSE, Batch of 2006</p>
+            </div>
+          </div>
+          <p class="opacity-90 mb-4">
+            "My journey at MSEC shaped my professional career. The values and discipline instilled during my college days continue to guide me in my role as Deputy Director at DRI."
+          </p>
+          <div class="flex text-secondary">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-2">Contact Us</h2>
+        <div class="w-20 h-1 bg-secondary mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-3xl mx-auto">Get in touch with us for any queries or information</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-8">
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+              </div>
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <select id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                  <option value="">Select a subject</option>
+                  <option value="admission">Admission Enquiry</option>
+                  <option value="academics">Academic Information</option>
+                  <option value="placement">Placement Related</option>
+                  <option value="facilities">Campus Facilities</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white py-3 px-4 rounded-md hover:bg-primary/90 transition-colors">
+              Send Message
+            </button>
+          </form>
+        </div>
+        
+        <div>
+          <div class="bg-primary text-white rounded-lg shadow-md p-8 mb-6">
+            <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-medium">Address</h4>
+                  <p class="opacity-90">363, Arcot Road, Kodambakkam, Chennai - 600 024, Tamil Nadu, India</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <i class="fas fa-phone-alt mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-medium">Phone</h4>
+                  <p class="opacity-90">+91 9790821869 / 9840311869</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <i class="fas fa-envelope mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-medium">Email</h4>
+                  <p class="opacity-90">info@msec.edu.in</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <i class="fas fa-clock mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-medium">Office Hours</h4>
+                  <p class="opacity-90">Monday to Saturday: 9:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.8881532109316!2d80.2225!3d13.0456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266ea218f1b6f%3A0x45c0d289c2d58be!2sMeenakshi%20Sundararajan%20Engineering%20College!5e0!3m2!1sen!2sin!4v1635835741234!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center mb-4">
+            <img src="https://msec.edu.in/logomsec.png" alt="MSEC Logo" class="h-12 mr-3">
+            <div>
+              <h3 class="text-lg font-bold">MSEC</h3>
+              <p class="text-sm opacity-80">Est. 2001</p>
+            </div>
+          </div>
+          <p class="opacity-80 mb-4">
+            Meenakshi Sundararajan Engineering College is committed to providing quality education with the highest emphasis on ethical values.
+          </p>
+          <div class="flex space-x-3">
+            <a href="https://www.instagram.com/msecofficial_chennai24/" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/school/meenakshi-sundararajan-engineering-college/" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com/Meenaks69013210?t=LgZCA_xGVv99qM5nGfEmHg&s=09" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100009573376892&mibextid=ZbWKwL" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://youtube.com/@meenakshisundararajanengin6468" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 opacity-80">
+            <li><a href="#about" class="hover:text-secondary transition-colors">About Us</a></li>
+            <li><a href="#departments" class="hover:text-secondary transition-colors">Departments</a></li>
+            <li><a href="#admissions" class="hover:text-secondary transition-colors">Admissions</a></li>
+            <li><a href="#placements" class="hover:text-secondary transition-colors">Placements</a></li>
+            <li><a href="#facilities" class="hover:text-secondary transition-colors">Facilities</a></li>
+            <li><a href="https://msec.edu.in/contact.html" target="_blank" class="hover:text-secondary transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Important Links</h3>
+          <ul class="space-y-2 opacity-80">
+            <li><a href="https://msec.edu.in/MandatoryDisclosureMSEC.pdf" target="_blank" class="hover:text-secondary transition-colors">Mandatory Disclosure</a></li>
+            <li><a href="https://msec.edu.in/StudentVerificationForm.pdf" target="_blank" class="hover:text-secondary transition-colors">Student Verification Form</a></li>
+            <li><a href="https://msec.edu.in/MSEC_HelpDesk.html" target="_blank" class="hover:text-secondary transition-colors">Help Desk</a></li>
+            <li><a href="https://msec.edu.in/coe.html" target="_blank" class="hover:text-secondary transition-colors">Examination Portal</a></li>
+            <li><a href="https://msec.edu.in/MSECServicerules.pdf" target="_blank" class="hover:text-secondary transition-colors">Service Rules</a></li>
+            <li><a href="https://msec.edu.in/Audit.html" target="_blank" class="hover:text-secondary transition-colors">Audited Statements</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <ul class="space-y-3 opacity-80">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+              <span>363, Arcot Road, Kodambakkam, Chennai - 600 024</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone-alt mt-1 mr-2"></i>
+              <span>+91 9790821869 / 9840311869</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-2"></i>
+              <span>info@msec.edu.in</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="pt-6 border-t border-white/10 text-center">
+        <p class="opacity-80 text-sm">© 2025 Meenakshi Sundararajan Engineering College. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-secondary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') 
+        ? '<i class="fas fa-bars text-2xl"></i>' 
+        : '<i class="fas fa-times text-2xl"></i>';
+    });
+    
+    // Mobile Dropdowns
+    const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+    
+    mobileDropdowns.forEach(dropdown => {
+      const button = dropdown.querySelector('button');
+      const content = dropdown.querySelector('div');
+      
+      button.addEventListener('click', () => {
+        content.classList.toggle('hidden');
+        const icon = button.querySelector('i');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      });
+    });
+    
+    // Hero Carousel
+    const carousel = document.querySelector('#hero-carousel .flex');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevButton = document.getElementById('prev-slide');
+    const nextButton = document.getElementById('next-slide');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    let currentSlide = 0;
+    
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.add('bg-white');
+          indicator.classList.remove('bg-white/50');
+        } else {
+          indicator.classList.remove('bg-white');
+          indicator.classList.add('bg-white/50');
+        }
+      });
+    }
+    
+    prevButton.addEventListener('click', () => {
+      currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+      updateCarousel();
+    });
+    
+    nextButton.addEventListener('click', () => {
+      currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+      updateCarousel();
+    });
+    
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+      });
+    });
+    
+    // Auto-advance carousel
+    setInterval(() => {
+      currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+      updateCarousel();
+    }, 5000);
+    
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Form Submission
+    const contactForm = document.getElementById('contact-form');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Simulate form submission
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+      submitButton.disabled = true;
+      
+      setTimeout(() => {
+        alert('Thank you for your message! We will get back to you soon.');
+        contactForm.reset();
+        submitButton.innerHTML = 'Send Message';
+        submitButton.disabled = false;
+      }, 1500);
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

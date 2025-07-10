@@ -1,0 +1,12 @@
+<!-- notifications.html -->
+<h2>Your Notifications</h2>
+<ul>
+    {% for notification in notifications %}
+        <li>
+            <a href="{{ url_for('blog_detail', blog_id=notification.blog_id) }}">
+                {{ notification.message }}
+            </a>
+            <small>{{ notification.timestamp }}</small>
+        </li>
+    {% endfor %}
+</ul>
