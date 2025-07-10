@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Exam Registration System{% endblock %}
+
+{% block header %}Dashboard{% endblock %}
+{% block subheader %}Welcome to the Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="px-4 py-6 sm:px-6">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Students Card -->
+        <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
+            <div class="p-5 border-b border-gray-200">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                        <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Students</dt>
+                            <dd>
+                                <div class="text-lg font-medium text-gray-900">{{ students|length }}</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                    <a href="{{ url_for('view_students') }}" class="font-medium text-primary-600 hover:text-primary-500">
+                        View all students
+                        <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exams Card -->
+        <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
+            <div class="p-5 border-b border-gray-200">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-secondary-100 rounded-md p-3">
+                        <svg class="h-6 w-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Exams</dt>
+                            <dd>
+                                <div class="text-lg font-medium text-gray-900">{{ exams|length }}</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                    <a href="{{ url_for('view_exams') }}" class="font-medium text-secondary-600 hover:text-secondary-500">
+                        View all exams
+                        <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registrations Card -->
+        <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
+            <div class="p-5 border-b border-gray-200">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-accent-100 rounded-md p-3">
+                        <svg class="h-6 w-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Registrations</dt>
+                            <dd>
+                                <div class="text-lg font-medium text-gray-900">{{ registrations|length }}</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                    <a href="{{ url_for('view_registrations') }}" class="font-medium text-accent-600 hover:text-accent-500">
+                        View all registrations
+                        <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <div class="rounded-md bg-primary-50 p-4">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="ml-3 flex-1 md:flex md:justify-between">
+                    <p class="text-sm text-primary-700">
+                        Need to register a student for an exam?
+                    </p>
+                    <p class="mt-3 text-sm md:mt-0 md:ml-6">
+                        <a href="{{ url_for('register') }}" class="whitespace-nowrap font-medium text-primary-700 hover:text-primary-600">
+                            Register now
+                            <span aria-hidden="true"> &rarr;</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Access Section -->
+    <div class="mt-8">
+        <h2 class="text-lg font-medium text-gray-900">Quick Actions</h2>
+        <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                <div class="flex-shrink-0">
+                    <div class="h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center">
+                        <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <a href="{{ url_for('view_students') }}" class="focus:outline-none">
+                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <p class="text-sm font-medium text-gray-900">Manage Students</p>
+                        <p class="text-sm text-gray-500 truncate">View and manage student records</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-secondary-500">
+                <div class="flex-shrink-0">
+                    <div class="h-10 w-10 rounded-full bg-secondary-100 flex items-center justify-center">
+                        <svg class="h-6 w-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <a href="{{ url_for('view_exams') }}" class="focus:outline-none">
+                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <p class="text-sm font-medium text-gray-900">Manage Exams</p>
+                        <p class="text-sm text-gray-500 truncate">View and manage upcoming exams</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Students - Exam Registration System{% endblock %}
+
+{% block header %}Students{% endblock %}
+{% block subheader %}View all registered students in the system{% endblock %}
+
+{% block content %}
+<div class="px-4 py-5 sm:p-6">
+    <div class="sm:flex sm:items-center mb-6">
+        <div class="sm:flex-auto">
+            <p class="mt-2 text-sm text-gray-700">
+                A list of all students including their ID, name, and email address.
+            </p>
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Student ID
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Name
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Email
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Registered Exams
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            {% for student in students %}
+                                <tr class="hover:bg-gray-50 transition-colors duration-150 ease-in-out">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        {{ student.student_id }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ student.name }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <a href="mailto:{{ student.email }}" class="text-primary-600 hover:text-primary-900">{{ student.email }}</a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {% set exam_count = 0 %}
+                                        {% for registration in registrations %}
+                                            {% if registration.student.student_id == student.student_id %}
+                                                {% set exam_count = exam_count + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {% if exam_count > 0 %}bg-green-100 text-green-800{% else %}bg-gray-100 text-gray-800{% endif %}">
+                                            {{ exam_count }} exams
+                                        </span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            
+                            {% if students|length == 0 %}
+                                <tr>
+                                    <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                        No students found in the system.
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-10 sm:flex sm:items-center">
+        <div class="max-w-xl text-sm text-gray-500">
+            <p>
+                Students need to be registered for exams. View the exams page to see available exams.
+            </p>
+        </div>
+        <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
+            <a href="{{ url_for('register') }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                Register for Exam
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

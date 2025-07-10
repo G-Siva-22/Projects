@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Register for Exam - Exam Registration System{% endblock %}
+
+{% block header %}Register for Exam{% endblock %}
+{% block subheader %}Register students for their upcoming exams{% endblock %}
+
+{% block content %}
+<div class="px-4 py-5 sm:p-6">
+    <form action="{{ url_for('register') }}" method="post" class="space-y-8 divide-y divide-gray-200">
+        <div class="space-y-8 divide-y divide-gray-200">
+            <div>
+                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <div class="sm:col-span-3">
+                        <label for="student_id" class="block text-sm font-medium text-gray-700">
+                            Student
+                        </label>
+                        <div class="mt-1">
+                            <select id="student_id" name="student_id" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                <option value="" disabled selected>Select a student</option>
+                                {% for student in students %}
+                                    <option value="{{ student.student_id }}">{{ student.name }} ({{ student.student_id }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sm:col-span-3">
+                        <label for="exam_id" class="block text-sm font-medium text-gray-700">
+                            Exam
+                        </label>
+                        <div class="mt-1">
+                            <select id="exam_id" name="exam_id" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                <option value="" disabled selected>Select an exam</option>
+                                {% for exam in exams %}
+                                    <option value="{{ exam.exam_id }}">{{ exam.exam_name }} ({{ exam.date }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-5">
+            <div class="flex justify-end">
+                <button type="reset" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Reset
+                </button>
+                <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Register
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="mt-10">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Registration Guidelines</h3>
+        <div class="mt-5 border-t border-gray-200">
+            <dl class="divide-y divide-gray-200">
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                    <dt class="text-sm font-medium text-gray-500">Eligibility</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        Students must be registered in the system before they can be registered for exams.
+                    </dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                    <dt class="text-sm font-medium text-gray-500">Exam Schedule</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        Students should check the exam date before registering to ensure they can attend.
+                    </dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                    <dt class="text-sm font-medium text-gray-500">Multiple Registrations</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        Students may register for multiple exams, but cannot register twice for the same exam.
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>
+{% endblock %}

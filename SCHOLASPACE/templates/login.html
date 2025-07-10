@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Video Meeting</title>
+    <style>
+        /* General body styling with background image */
+        body {
+            font-family: Arial, sans-serif;
+            background-color:white;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            color: white;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Main container for image and login form */
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Styling for the left image */
+        .image-container {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* Black transparent glass effect container styling */
+        .container {
+            flex: 1;
+           /* Black transparency */
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        /* Form styling */
+        .form-container {
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Reduced width for input fields */
+        .input-field {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+        }
+
+        h2,
+        p {
+            color: rgb(147, 175, 241);
+        }
+
+        /* Button styling */
+        .btn {
+            background-color: #6c6ceb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 50%;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color:#6c6ceb;
+        }
+
+        /* Error message styling */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Register link styling */
+        .register-link a {
+            color: lightblue;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Image on the left side -->
+        <div class="image-container">
+            <img src="https://static.vecteezy.com/system/resources/previews/003/689/225/original/online-registration-or-sign-up-login-for-account-on-smartphone-app-user-interface-with-secure-password-mobile-application-for-ui-web-banner-access-cartoon-people-illustration-vector.jpg" alt="Meeting Image">
+        </div>
+
+        <!-- Login form on the right side -->
+        <div class="container">
+            <h2>Login to Video Meeting</h2>
+            <form class="form-container" action="/login" method="POST">
+                {{ form.hidden_tag() }} <!-- CSRF token -->
+                <div class="form-group">
+                    {{ form.email.label }}<br>
+                    {{ form.email(class="input-field") }}<br>
+                    {% for error in form.email.errors %}
+                    <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label }}<br>
+                    {{ form.password(class="input-field") }}<br>
+                    {% for error in form.password.errors %}
+                    <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p class="register-link">Don't have an account? <a href="{{ url_for('meet.register') }}">Register here</a></p>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+
+</html>

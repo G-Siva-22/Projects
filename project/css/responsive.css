@@ -1,0 +1,208 @@
+/* 
+ * Responsive Styles for Local Community Event Portal
+ * Contains media queries for different viewport sizes
+ */
+
+/* Small devices (phones, up to 576px) */
+@media (max-width: 576px) {
+  :root {
+    --base-font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.7rem;
+  }
+  
+  .container {
+    width: 95%;
+    padding: var(--space-sm);
+  }
+  
+  #mainHeader .container {
+    flex-direction: column;
+    padding: var(--space-xs) 0;
+  }
+  
+  .logo {
+    margin-bottom: var(--space-sm);
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav ul li {
+    margin: var(--space-xs) 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: var(--space-xs);
+  }
+  
+  .gallery-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .gallery-table td {
+    padding: var(--space-sm);
+  }
+  
+  .gallery-image {
+    height: 120px;
+  }
+  
+  .news-columns {
+    column-count: 1;
+  }
+  
+  form {
+    padding: var(--space-md);
+  }
+  
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-container select {
+    width: 100%;
+  }
+  
+  .form-group .btn {
+    width: 100%;
+    margin-bottom: var(--space-sm);
+  }
+}
+
+/* Medium devices (tablets, 577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  #mainHeader .container {
+    padding: var(--space-xs) 0;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: var(--space-xs);
+  }
+  
+  .gallery-image {
+    height: 150px;
+  }
+  
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .news-columns {
+    column-count: 2;
+  }
+}
+
+/* Large devices (desktops, 769px to 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .container {
+    width: 85%;
+  }
+  
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Extra large devices (large desktops, 993px and up) */
+@media (min-width: 993px) {
+  .container {
+    width: 80%;
+  }
+  
+  .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    background: white;
+    color: black;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+  
+  #mainHeader, 
+  #welcomeBanner,
+  #videoSection,
+  footer,
+  .btn {
+    display: none;
+  }
+  
+  h1 {
+    font-size: 24pt;
+  }
+  
+  h2 {
+    font-size: 18pt;
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+  
+  @page {
+    margin: 2cm;
+  }
+  
+  a:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+  
+  .events-grid {
+    display: block;
+  }
+  
+  .event-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 1cm;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}

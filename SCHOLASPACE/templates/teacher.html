@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEACHERS</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #edcf9b; /* Soft pastel background */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh; /* Ensure body takes up full height */
+      position: relative;
+      padding-bottom: 80px; /* Space for the footer */
+    }
+    
+    /* Image Styles */
+    .full-image {
+      width: 95%; /* Reduced width for the image */
+      height: 800px; /* Set height for the image */
+      border-radius: 10px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      object-fit: cover; /* Ensure the entire image fits */
+    }
+    
+    /* About Section */
+    .about-section {
+      background-color: #f5e1c9e6;
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 60px;
+      width: 80%;
+      flex-wrap: wrap; /* Ensure responsiveness */
+    }
+    
+    .about-text {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .about-section h2 {
+      color:  #7d1c1c;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    
+    .about-section p {
+      color: #0d371d;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    .about-image {
+      flex: 0 0 400px;
+      margin-right: 30px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(26, 18, 137, 0.826);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+    
+    /* Features Heading */
+    .features-heading {
+      margin-top: 20px;
+      font-size: 60px;
+      font-weight: bold;
+      color:  #7d1c1c;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    /* Features Section */
+    .features-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      width: 80%;
+      flex-wrap: wrap; /* Allow wrapping for mobile screens */
+    }
+    
+    .feature {
+      width: 48%;
+      height: 350px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(63, 29, 188, 0.838);
+      transition: transform 0.3s, background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-image: url('https://static.vecteezy.com/system/resources/previews/011/277/869/original/female-school-teacher-in-classroom-smiling-young-woman-standing-beside-blackboard-teaching-lesson-education-knowledge-concept-school-banner-cartoon-illustration-vector.jpg');
+      background-size: cover;
+    }
+    
+    .feature:hover {
+      transform: translateY(-2px);
+    }
+    
+    .feature a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #68a6e3;
+      color: #2b1b9f;
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+    
+    footer p {
+      font-size: 16px;
+      margin: 0;
+    }
+    
+    @media (max-width: 768px) {
+      /* Adjust image height for smaller screens */
+      .full-image {
+        height: 300px;
+      }
+    
+      /* Stack the about section elements vertically */
+      .about-section {
+        flex-direction: column;
+        padding: 20px;
+      }
+    
+      .about-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 80%; /* Reduced width for small screens */
+      }
+    
+      .about-image img {
+        height: 450px; /* Adjust image height */
+      }
+    
+      .features-heading {
+        font-size: 40px; /* Smaller font size for features heading */
+      }
+    
+      /* Stack features on smaller screens */
+      .features-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Added gap between features */
+      }
+    
+      .feature {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 10px;
+      }
+    
+      .feature a {
+        font-size: 24px; /* Adjust link font size for mobile */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .about-section h2 {
+        font-size: 36px; /* Further reduced font size */
+      }
+    
+      .about-section p {
+        font-size: 16px; /* Smaller font size for paragraph */
+      }
+    
+      .features-heading {
+        font-size: 40px; /* Smaller features heading for mobile */
+      }
+    
+      .feature a {
+        font-size: 20px; /* Further adjustment for mobile font */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full Image -->
+  <img class="full-image" src="static/images/STUDENT.JPG" alt="Kids Studying in Nature">
+
+  <!-- About Section -->
+  <div class="about-section">
+    <div class="about-image">
+      <img src="https://static.vecteezy.com/system/resources/previews/003/100/629/original/teacher-teaching-students-in-the-classroom-scene-free-vector.jpg" alt="Ocean Image">
+    </div>
+    <div class="about-text">
+      <h2>ABOUT US</h2>
+      <p>
+        Teachers create a safe and friendly environment where everyone can share their ideas and grow together. They inspire creativity and curiosity, encouraging you to chase your dreams and believe in yourself. Whether you're learning about numbers, letters, or the world around you, your teacher is there to help you every step of the way. They work hard to make sure you have the best possible education, and they care about your success and happiness.
+      </p>
+    </div>
+  </div>
+
+   <!-- Features Heading -->
+   <div class="features-heading"> FEATURES</div>
+
+   <!-- Features Section -->
+   <div class="features-section">
+     <div class="feature">
+       <a href="/home"><p style="margin-bottom: 150px; font-size:22px;">ATTENDANCE</p></a>
+     </div>
+     <div class="feature">
+       <a href="/meet"><p style="margin-bottom: 150px; font-size:22px;">VIRTUAL INTERACTION ROOM</p></a>
+     </div>
+   </div>
+ 
+
+<!-- Footer -->
+<footer style=" position:fixed;left: 0; right: 0; bottom: 0; background-color: #e7c26a; color:  #7d1c1c; padding: 21px 0; text-align: center; font-weight: bolder;margin: bottom 0px; ;">
+  <p style="font-size: 16px; margin: 0;">&copy; DEVELOPED WITH CARE BY BELIEVERS</p>
+</footer>
+
+
+</body>
+</html>

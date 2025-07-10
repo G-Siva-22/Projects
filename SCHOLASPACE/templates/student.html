@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDENTS</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #3aa286; /* Soft pastel background */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh; /* Ensure body takes up full height */
+      position: relative;
+      padding-bottom: 80px; /* Space for the footer */
+    }
+    
+    /* Image Styles */
+    .full-image {
+      width: 95%; /* Reduced width for the image */
+      height: 800px; /* Set height for the image */
+      border-radius: 10px;
+      box-shadow: 0 10px 15px rgba(50, 225, 216, 0.71);
+      margin-top: 20px;
+      object-fit: cover; /* Ensure the entire image fits */
+    }
+    
+    /* About Section */
+    .about-section {
+      background-color: #b4e4c4;
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 60px;
+      width: 80%;
+      flex-wrap: wrap; /* Ensure responsiveness */
+    }
+    
+    .about-text {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .about-section h2 {
+      color: #0d301c;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    
+    .about-section p {
+      color: #5d5d5d;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    .about-image {
+      flex: 0 0 400px;
+      margin-right: 30px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(21, 117, 73, 0.826);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+    
+    /* Features Heading */
+    .features-heading {
+      margin-top: 20px;
+      font-size: 60px;
+      font-weight: bold;
+      color: #0d301c;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    /* Features Section */
+    .features-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      width: 80%;
+      flex-wrap: wrap; /* Allow wrapping for mobile screens */
+    }
+    
+    .feature {
+      width: 48%;
+      height: 350px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(12, 101, 36, 0.838);
+      transition: transform 0.3s, background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-image: url('https://s3.voquent.com/media/81491662629606-0.png');
+      background-size: cover;
+    }
+    
+    .feature:hover {
+      transform: translateY(-2px);
+    }
+    
+    .feature a {
+      text-decoration: none;
+      color: #4d4d4d;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #68e39b;
+      color: #0d301c;
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+    
+    footer p {
+      font-size: 16px;
+      margin: 0;
+    }
+    
+    @media (max-width: 768px) {
+      /* Adjust image height for smaller screens */
+      .full-image {
+        height: 300px;
+      }
+    
+      /* Stack the about section elements vertically */
+      .about-section {
+        flex-direction: column;
+        padding: 20px;
+      }
+    
+      .about-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 80%; /* Reduced width for small screens */
+      }
+    
+      .about-image img {
+        height: 450px; /* Adjust image height */
+      }
+    
+      .features-heading {
+        font-size: 40px; /* Smaller font size for features heading */
+      }
+    
+      /* Stack features on smaller screens */
+      .features-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Added gap between features */
+      }
+    
+      .feature {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 10px;
+      }
+    
+      .feature a {
+        font-size: 24px; /* Adjust link font size for mobile */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .about-section h2 {
+        font-size: 36px; /* Further reduced font size */
+      }
+    
+      .about-section p {
+        font-size: 16px; /* Smaller font size for paragraph */
+      }
+    
+      .features-heading {
+        font-size: 40px; /* Smaller features heading for mobile */
+      }
+    
+      .feature a {
+        font-size: 20px; /* Further adjustment for mobile font */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full Image -->
+  <img class="full-image" src="static/images/TEACHER.JPG" alt="Kids Studying in Nature">
+
+  <!-- About Section -->
+  <div class="about-section">
+    <div class="about-image">
+      <img src="static/images/STU.JPG" alt="Ocean Image">
+    </div>
+    <div class="about-text">
+      <h2>ABOUT US</h2>
+      <p>
+        Students, remember that your journey through education is just as important as the destination. Each day brings new challenges and opportunities to learn and grow. Embrace every setback as a lesson that brings you closer to your goals. With hard work, determination, and a belief in your limitless potential, you can achieve anything you set your mind to. Together, let's support one another, celebrate our successes, and inspire each other to reach for the stars. Your future is bright, and the possibilities are endless!
+      </p>
+    </div>
+  </div>
+
+   <!-- Features Heading -->
+   <div class="features-heading">FEATURES</div>
+
+   <!-- Features Section -->
+   <div class="features-section">
+     <div class="feature">
+       <a href="/voice/voice1"><p style="margin-bottom: 290px; font-size:22px;">VOICE BOT</p></a>
+     </div>
+     <div class="feature">
+       <a href="/doubt"><p style="margin-bottom: 290px; font-size:22px;">DOUBT ANALYSER</p></a>
+     </div>
+   </div>
+ 
+
+<!-- Footer -->
+<footer style="position: fixed; left: 0; right: 0; bottom: 0; background-color: #68e39b; color: #0d301c; padding: 20px 0; text-align: center; font-weight: bolder;">
+  <p style="font-size: 16px; margin: 0;">&copy; DEVELOPED WITH CARE BY BELIEVERS</p>
+</footer>
+
+
+</body>
+</html>

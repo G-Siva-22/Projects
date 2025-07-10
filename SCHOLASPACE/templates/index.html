@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHOLASPACE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+                /* Contact Form Styles */
+                .contact-form {
+            max-width: 600px; /* Max width of the form */
+            margin: 20px auto; /* Center the form */
+            padding: 20px;
+            background-color: #FFFFFF; /* White background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            color: #C84D4B; /* Dark Coral color */
+            margin-bottom: 20px; /* Space below heading */
+            text-align: center; /* Center align heading */
+        }
+
+        .contact-form label {
+            display: block; /* Each label in a new line */
+            margin-bottom: 5px; /* Space below each label */
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding for input fields */
+            margin-bottom: 15px; /* Space below each input */
+            border: 1px solid #ccc; /* Border color */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .contact-form button {
+            background-color: #C84D4B; /* Dark Coral button */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* Full width button */
+        }
+
+        .contact-form button:hover {
+            background-color: #A32D2A; /* Darker color on hover */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F8D4D0; /* Light Pink background */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            margin-bottom: 0px;
+            background-color: #C84D4B; /* Dark Coral navbar */
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .nav-links a:hover {
+            color: #F0F0F0; /* Slightly lighter color on hover */
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+
+        /* Image Style */
+        .banner-image {
+            width: 100%; /* Full width */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 1920px; /* Max width for larger screens */
+            max-height: 1000px; /* Max height */
+            display: block;
+        }
+
+        .about-us {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px;
+            background-color: #FFFFFF; /* White background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            max-width: 1800px; /* Reduced max width for large screens */
+            margin-left: auto; /* Center the About Us section */
+            margin-right: auto; /* Center the About Us section */
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .about-text h1 {
+            font-size: 33px; /* Larger font size for the heading */
+            color: #C84D4B; /* Dark Coral color for the heading */
+            margin-bottom: 10px; /* Space below the heading */
+            font-family: 'Arial Black', sans-serif; /* Bold font */
+        }
+
+        .about-text p {
+            font-size: 20px; /* Increased font size for better readability */
+            color: #333; /* Darker text color for contrast */
+            line-height: 1.6; /* Increased line height for better spacing */
+            margin-bottom: 15px; /* Space below each paragraph */
+        }
+
+        .carousel {
+            width: 600px;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-images img {
+            width: 600px; /* Carousel image width */
+            height: 450px; /* Carousel image height */
+            border-radius: 10px;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(200, 77, 75, 0.8);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 20px; /* Increase button size */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(200, 77, 75, 1); /* Darker on hover */
+        }
+
+        /* New Container Section */
+        .container-section {
+            display: flex; /* Flexbox for row layout */
+            flex-direction: row; /* Arrange items in a row */
+            justify-content: space-around; /* Space out items */
+            align-items: flex-start; /* Align items to the top */
+            margin: 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .features-title {
+            font-size: 35px; /* Title size */
+            color: #C84D4B; /* Dark Coral color */
+            font-weight: bolder;
+            margin-bottom: 20px; /* Space below title */
+            width: 100%; /* Full width for title */
+            text-align: center; /* Center align title */
+        }
+
+        .container {
+            display: flex; /* Flex display for horizontal alignment */
+            flex-direction: column; /* Vertical layout for text */
+            align-items: center; /* Center align items */
+            justify-content: flex-start; /* Align items to the top */
+            width: 30%; /* Width of the container */
+            background-color: #FFFFFF; /* White background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px; /* Space between containers */
+            position: relative; /* Allow positioning of details */
+            overflow: hidden; /* Hide overflow for animation */
+        }
+
+        .container img {
+            width: 100%; /* Full width of the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: transform 0.3s; /* Smooth rise effect */
+        }
+
+        .details {
+            display: none; /* Hide details by default */
+            margin-top: 10px; /* Space above details */
+        }
+
+        .container:hover img {
+            transform: translateY(-10px); /* Rise effect on hover */
+        }
+
+        .container:hover .details {
+            display: block; /* Show details on hover */
+        }
+
+        .container:hover .details-button {
+            display: block; /* Show button on hover */
+        }
+
+        .container h3 {
+            font-size: 24px; /* Container heading size */
+            color: #C84D4B; /* Dark Coral color */
+            margin-top: 20px;
+            margin-bottom: 10px; /* Space below heading */
+        }
+
+        .container p {
+            font-size: 16px; /* Container paragraph size */
+            color: #333; /* Darker text color */
+            line-height: 1.5; /* Line height for readability */
+        }
+
+        .details-button {
+            background-color: #C84D4B; /* Dark Coral button */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px3;
+            margin-left: 1px;
+            display: none; /* Hide button by default */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px; /* Adjust based on navbar height */
+                left: 0;
+                gap: 10px;
+                background-color: #C84D4B; /* Dark Coral background for dropdown */
+                padding: 30px 0; /* Add padding for small screen drawer */
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+            .banner-image{
+                height:400px;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+            
+            .action-button {
+                display: none;
+            }
+
+            .about-us {
+                flex-direction: column;
+                align-items: center;
+                margin: 10px;
+                max-width: none; /* Reset for small screens */
+            }
+
+            .carousel {
+                width: 100%; /* Full width on small screens */
+                height: 300px; /* Maintain aspect ratio */
+            }
+
+            .container-section {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Center align items */
+            }
+
+            .container {
+                width: 90%; /* Adjust width for small screens */
+            }
+            .contact-form{
+                width:90%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Scholospace</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact-form">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="banner-container" >
+        <img src="static/images/MAIN.png" alt="Banner Image" class="banner-image">
+        <button class="action-button" style="position: absolute; bottom: 200px; left:25%; transform: translateX(-50%); background-color: #C84D4B; color: white; padding: 20px 20px; border: none; border-radius: 5px;">Join Us!</button>
+    </div>
+    <div class="about-us" id="about">
+        <div class="about-text">
+            <h1>About Us</h1>
+            <p>Scholaspace is an AI-powered platform designed to revolutionize rural education by offering personalized learning experiences for kids, students, and teachers. The Kids Portal engages children with AI-driven rhymes and educational games, while the Student Portal provides an interactive voice bot for real-time doubt resolution and personalized learning paths. The Teacher Portal offers tools for live sessions, AI-based attendance tracking, and performance monitoring. By making quality education accessible anytime and anywhere, Scholaspace empowers rural communities with interactive, efficient, and adaptive learning solutions, helping bridge the education gap.</p>
+        </div>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="static/images/webo.webp" alt="Scholarship 1" class="banner-image">
+                
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button" onclick="prevSlide()">&#10094;</button>
+                <button class="carousel-button" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+    <!-- /* Features */ -->
+    <section>
+    <div class="features-title" id="features">Our Features</div>
+    <div class="container-section">
+        <div class="container">
+            <img src="static/images/kido.webp" alt="Feature 1">
+            <h3>KIDS</h3>
+            <p>A World of Fun Awaits!</p>
+            <div class="details">
+                
+                <button class="details-button" onclick="navigateTo('/kids')">Learn More</button>
+            </div>
+        </div>
+        <div class="container">
+            <img src="static/images/stud.webp" alt="Feature 2">
+            <h3>STUDENTS</h3>
+            <p>Explore, Engage, Excel!</p>
+            <div class="details">
+                
+                <button class="details-button" onclick="navigateTo('/student')">Learn More</button>
+            </div>
+        </div>
+        <div class="container">
+            <img src="static/images/tutor.webp" alt="Feature 3">
+            <h3>TEACHERS</h3>
+            <p>Inspire, Educate, Transform</p>
+            <div class="details">
+                
+                <button class="details-button" onclick="navigateTo('/teachers')">Learn More</button>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section>
+            <!-- Contact Form Section -->
+    <div class="contact-form" id="contact-form">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel-images img');
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel-images img');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const slides = document.querySelectorAll('.carousel-images img');
+            const offset = -currentSlide * 600; // image width
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}px)`;
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+        function navigateTo(page) {
+            // Redirects to the specified page
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

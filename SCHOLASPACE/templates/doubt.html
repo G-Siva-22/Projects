@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bold Word Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://cbeditz.com/large/school-green-board-background-hd-images-tnbbrtmpkv.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #2e7d32; /* Dark green */
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            width: calc(100% - 22px);
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #response {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            text-align: left;
+            background-color: #e8f5e9; /* Light green background */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bold Word Extractor</h1>
+        <form id="boldWordForm">
+            <input type="text" id="pdf_url" name="pdf_url" placeholder="Enter PDF URL" required><br>
+            <input type="number" id="page_number" name="page_number" placeholder="Enter Page Number" required><br>
+            <button type="submit">Extract Bold Words</button>
+        </form>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        document.getElementById('boldWordForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            fetch('/chat', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('response').textContent = data.response;
+            })
+            .catch(error => {
+                document.getElementById('response').textContent = 'An error occurred: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>

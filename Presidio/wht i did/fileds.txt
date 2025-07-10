@@ -1,0 +1,74 @@
+Here are the **headings** and their **fields** in text format:
+
+---
+
+### 1. `Users` Table
+- `user_id`
+- `username`
+- `email`
+- `password_hash`
+- `full_name`
+- `bio`
+- `profile_image`
+- `role`
+- `created_at`
+- `updated_at`
+
+---
+
+### 2. `Posts` Table
+- `post_id`
+- `author_id`
+- `title`
+- `slug`
+- `content`
+- `excerpt`
+- `thumbnail`
+- `status`
+- `created_at`
+- `updated_at`
+- `published_at`
+- `is_featured`
+- `view_count`
+
+---
+
+### 3. `Comments` Table
+- `comment_id`
+- `post_id`
+- `user_id`
+- `content`
+- `created_at`
+- `is_approved`
+
+---
+
+### 4. `Likes` Table
+- `like_id`
+- `post_id`
+- `user_id`
+- `liked_at`
+
+---
+
+### 5. `Saved_Posts` Table
+- `user_id`
+- `post_id`
+- `saved_at`
+
+---
+
+### 6. `Categories` Table
+- `category_id`
+- `name`
+- `slug`
+- `description`
+- `created_at`
+
+---
+
+### 7. `Post_Categories` Table
+- `post_id`
+- `category_id`
+
+---

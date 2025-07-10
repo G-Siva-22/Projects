@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIDS</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #addcef; /* Soft pastel background */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh; /* Ensure body takes up full height */
+      position: relative;
+      padding-bottom: 80px; /* Space for the footer */
+    }
+    
+    /* Image Styles */
+    .full-image {
+      width: 95%; /* Reduced width for the image */
+      height: 800px; /* Set height for the image */
+      border-radius: 10px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      object-fit: cover; /* Ensure the entire image fits */
+    }
+    
+    /* About Section */
+    .about-section {
+      background-color: #e1f5fe;
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 60px;
+      width: 80%;
+      flex-wrap: wrap; /* Ensure responsiveness */
+    }
+    
+    .about-text {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .about-section h2 {
+      color: #003366;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    
+    .about-section p {
+      color: #5d5d5d;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    .about-image {
+      flex: 0 0 400px;
+      margin-right: 30px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(26, 18, 137, 0.826);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+    
+    /* Features Heading */
+    .features-heading {
+      margin-top: 20px;
+      font-size: 60px;
+      font-weight: bold;
+      color: #003366;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    /* Features Section */
+    .features-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      width: 80%;
+      flex-wrap: wrap; /* Allow wrapping for mobile screens */
+    }
+    
+    .feature {
+      width: 48%;
+      height: 350px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(63, 29, 188, 0.838);
+      transition: transform 0.3s, background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-image: url('https://static.vecteezy.com/system/resources/previews/013/474/065/original/summer-holiday-with-cartoon-kids-vector.jpg');
+      background-size: cover;
+    }
+    
+    .feature:hover {
+      transform: translateY(-2px);
+    }
+    
+    .feature a {
+      text-decoration: none;
+      color: #4d4d4d;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #68a6e3;
+      color: #2b1b9f;
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+    
+    footer p {
+      font-size: 16px;
+      margin: 0;
+    }
+    
+    @media (max-width: 768px) {
+      /* Adjust image height for smaller screens */
+      .full-image {
+        height: 300px;
+      }
+    
+      /* Stack the about section elements vertically */
+      .about-section {
+        flex-direction: column;
+        padding: 20px;
+      }
+    
+      .about-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 80%; /* Reduced width for small screens */
+      }
+    
+      .about-image img {
+        height: 450px; /* Adjust image height */
+      }
+    
+      .features-heading {
+        font-size: 40px; /* Smaller font size for features heading */
+      }
+    
+      /* Stack features on smaller screens */
+      .features-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Added gap between features */
+      }
+    
+      .feature {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 10px;
+      }
+    
+      .feature a {
+        font-size: 24px; /* Adjust link font size for mobile */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .about-section h2 {
+        font-size: 36px; /* Further reduced font size */
+      }
+    
+      .about-section p {
+        font-size: 16px; /* Smaller font size for paragraph */
+      }
+    
+      .features-heading {
+        font-size: 40px; /* Smaller features heading for mobile */
+      }
+    
+      .feature a {
+        font-size: 20px; /* Further adjustment for mobile font */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full Image -->
+  <img class="full-image" src="static/images/kids.JPG" alt="Kids Studying in Nature">
+
+  <!-- About Section -->
+  <div class="about-section">
+    <div class="about-image">
+      <img src="https://static.vecteezy.com/system/resources/previews/014/727/814/non_2x/teacher-and-kids-activity-in-kindergarten-classroom-illustration-vector.jpg" alt="Ocean Image">
+    </div>
+    <div class="about-text">
+      <h2>ABOUT US</h2>
+      <p>
+        Kids are a source of endless motivation and inspiration. Their boundless energy and enthusiasm remind us that every day is a new adventure filled with possibilities. With their curious minds, kids approach the world with wonder, always eager to learn and explore. They teach us the importance of asking questions and seeking answers, showing us that curiosity is the key to discovery.
+      </p>
+    </div>
+  </div>
+
+   <!-- Features Heading -->
+   <div class="features-heading"> FEATURES</div>
+
+   <!-- Features Section -->
+   <div class="features-section">
+     <div class="feature">
+       <a href="/chat1"><p style="margin-top: 290px; font-size:22px;">RHYMES GENERATOR</p></a>
+     </div>
+     <div class="feature">
+       <a href="https://msec3rdyear.pythonanywhere.com/"><p style="margin-top: 290px; font-size:22px;">JASH - GAMES</p></a>
+     </div>
+   </div>
+ 
+
+<!-- Footer -->
+<footer style="position: fixed; left: 0; right: 0; bottom: 0; background-color: #68a6e3; color:  #003366; padding: 20px 0; text-align: center; font-weight: bolder;">
+  <p style="font-size: 16px; margin: 0;">&copy; DEVELOPED WITH CARE BY BELIEVERS</p>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* Additional Custom Styles */
+.card-zoom {
+  transition: transform 0.2s ease;
+}
+
+.card-zoom:hover {
+  transform: scale(1.02);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.hover-slide-up {
+  transition: transform 0.3s ease;
+}
+
+.hover-slide-up:hover {
+  transform: translateY(-4px);
+}
+
+/* Custom styling for focus states */
+.focus-visible-ring {
+  transition: box-shadow 0.2s ease;
+}
+
+.focus-visible-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Form element transitions */
+.form-transition {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Page transition effects */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
